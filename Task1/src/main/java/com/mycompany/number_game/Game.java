@@ -33,13 +33,14 @@ public class Game {
     }
     
     static int Run() throws InterruptedException{
-        
+        boolean again = true;
+       while(again){ 
         int orignalNum;
         int userNum;
         
        orignalNum = (int) (Math.random()*(101-1+1)+1); 
-        orignalNum=59;
-        System.out.println(orignalNum);
+       // orignalNum=59;
+       // System.out.println(orignalNum);
         
         for(int i = 1; i<=5;i++){
             
@@ -51,7 +52,7 @@ public class Game {
             
             if(orignalNum==userNum){
                 System.out.println("Your "+i+" Guess is Correct, You Won.\n"
-                        + "Your Score is "+(5-i)+" out of 5.");
+                        + "Your Score is "+(5-(i-1))+" out of 5.");
                 sleep(1000);
                 return 0;
             }
@@ -60,11 +61,17 @@ public class Game {
             sleep(1000);
             
             if(i==5){
-                System.out.println("Your Score is 0 (Zero) out of 5.");
+                System.out.println("\nYour Score is 0 (Zero) out of 5."
+                        + "\n\n=>The orignal Number was "+ orignalNum);
             }
         }
         
-        
+        System.out.println("\nDo you wish to play anoher round? \nPress Y or y for yes OR any other key to exit.");
+        Scanner sc = new Scanner(System.in);
+        String next=sc.nextLine();
+        if(next == "Y" || next == "y")
+            Run();
+       }
         return 0;
     }
 }
