@@ -1,77 +1,82 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.number_game;
-import java.util.*;  
-import static java.lang.Thread.sleep;
 
+import java.util.*;
+import static java.lang.Thread.sleep;
 
 /**
  *
  * @author anass
  */
 public class Game {
-    
+
     public static void main(String[] args) throws InterruptedException {
-        
-    
-        
-        System.out.println("\t\t*** Welcome to the Number Game: ***\nInstructions for Playing are as follow:-\n"
-                + "\n1)Enter a number between 1 to 100 & press Enter.\n"
-                + "2)You are given maximum 5 tries to guess a number.\n"
-                + "3)If you guessed it right, you WON & the game ends.\n\n");
+
+        System.out.println("""
+                           \t\t*** Welcome to the Number Game: ***
+                           Instructions for Playing are as follow:-
+                           
+                           1)Enter a number between 1 to 100 & press Enter.
+                           2)You are given maximum 5 tries to guess a number.
+                           3)If you guessed it right, you WON & the game ends.
+                           
+                           """);
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Your Name: ");
         String userName = sc.nextLine();
-        
-        
-       
-        int result = Run();
-        
+
+        boolean result = true;
+
+        do {
+            result = Run();
+
+            System.out.println(userName + " do you wish to play Again? Enter yes/No ");
+            Scanner sc2 = new Scanner(System.in);
+            String again = sc2.nextLine();
+
+            if (!again.equals("yes")) {
+
+                result = false;
+            }
+
+        } while (result);
+
     }
-    
-    static int Run() throws InterruptedException{
-        boolean again = true;
-       while(again){ 
+
+    static boolean Run() throws InterruptedException {
+
         int orignalNum;
         int userNum;
-        
-       orignalNum = (int) (Math.random()*(101-1+1)+1); 
-       // orignalNum=59;
-       // System.out.println(orignalNum);
-        
-        for(int i = 1; i<=5;i++){
-            
-            System.out.println("Enter Your "+i+" Guess: ");
+
+        orignalNum = (int) (Math.random() * (101 - 1 + 1) + 1);
+
+        for (int i = 1; i <= 5; i++) {
+
+            System.out.println("Enter Your " + i + " Guess: ");
             Scanner sc = new Scanner(System.in);
-            userNum=sc.nextInt();
-            
-            String approach=(orignalNum>userNum) ? ("Low"):("High");
-            
-            if(orignalNum==userNum){
-                System.out.println("Your "+i+" Guess is Correct, You Won.\n"
-                        + "Your Score is "+(5-(i-1))+" out of 5.");
+            userNum = sc.nextInt();
+
+            String approach = (orignalNum > userNum) ? ("Low") : ("High");
+
+            if (orignalNum == userNum) {
+                System.out.println("Your " + i + " Guess is Correct, You Won.\n"
+                        + "Your Score is " + (5 - (i - 1)) + " out of 5.");
                 sleep(1000);
-                return 0;
+                return true;
             }
-            System.out.println("Your "+i+" Guess is wrong, Try again:\n"
-                    + "Tip: Your Guess was "+ approach +" . ");
+            System.out.println("Your " + i + " Guess is wrong, Try again:\n"
+                    + "Tip: Your Guess was " + approach + " . ");
             sleep(1000);
-            
-            if(i==5){
-                System.out.println("\nYour Score is 0 (Zero) out of 5."
-                        + "\n\n=>The orignal Number was "+ orignalNum);
+
+            if (i == 5) {
+                System.out.println("""
+                                   
+                                   Your Score is 0 (Zero) out of 5.
+                                   
+                                   =>The orignal Number was """ + orignalNum);
             }
         }
-        
-        System.out.println("\nDo you wish to play anoher round? \nPress Y or y for yes OR any other key to exit.");
-        Scanner sc = new Scanner(System.in);
-        String next=sc.nextLine();
-        if(next == "Y" || next == "y")
-            Run();
-       }
-        return 0;
+
+        return true;
     }
 }
