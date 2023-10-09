@@ -64,6 +64,7 @@ public class Game {
                 sleep(1000);
                 return true;
             }
+
             System.out.println("Your " + i + " Guess is wrong, Try again:\n"
                     + "Tip: Your Guess was " + approach + " . ");
             sleep(1000);
@@ -76,7 +77,6 @@ public class Game {
                                    =>The orignal Number was """ + orignalNum);
             }
         }
-
         return true;
     }
 }
