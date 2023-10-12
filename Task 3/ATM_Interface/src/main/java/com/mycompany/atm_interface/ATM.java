@@ -18,7 +18,10 @@ public class ATM extends UserAccount {
         int choice = 0;
         while (choice < 4) {
 
-            System.out.println("\nPress 1 for Withdraw.\nPress 2 for Deposite.\nPress 3 for Check balance.\nPress 4 for Exit.");
+            System.out.println("\nPress 1 for Withdraw."
+                    + "\nPress 2 for Deposite."
+                    + "\nPress 3 for Check balance."
+                    + "\nPress 4 for Exit.");
             Scanner sc = new Scanner(System.in);
 
             choice = sc.nextInt();
