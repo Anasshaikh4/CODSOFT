@@ -31,7 +31,7 @@ public class UserAccount {
 
     static void checkBalance() {
 
-        System.out.println("\nYour Account Balance is: " + UserAccount.amount);
+        System.out.println("\nYour Present Account Balance is: " + UserAccount.amount);
 
     }
 }

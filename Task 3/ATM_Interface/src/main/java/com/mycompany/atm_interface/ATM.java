@@ -35,7 +35,7 @@ public class ATM extends UserAccount {
             switch (choice) {
 
                 case 1 -> {
-                    System.out.println("How mouch do you want to withdraw?");
+                    System.out.println("How mouch do you want to Withdraw?");
                     Scanner sc1 = new Scanner(System.in);
                     int amount = sc1.nextInt();
                     boolean transaction = withdraw(amount);
@@ -52,7 +52,7 @@ public class ATM extends UserAccount {
                     Scanner sc2 = new Scanner(System.in);
                     int amount_D = sc2.nextInt();
                     deposite(amount_D);
-                    
+
                     checkBalance();
                 }
                 case 3 -> {
